@@ -5,10 +5,18 @@ const canvas = document.getElementById("canvas");
 const resultText = document.getElementById("result");
 const btnGenearateAgain = document.getElementById("generateAgain");
 
+const gameStats = document.getElementById("game-stats");
+const attemptsRemainingEl = document.getElementById("attempts-remaining");
+const failedAttemptsEl = document.getElementById("failed-attempts");
+const usedLettersEl = document.getElementById("used-letters");
+
 let count = 0;
 let guessed = 0;
 let chosenWord = "";
 let levelDifficulty = "";
+let usedLetters = [];
+let maxAttempts = 7;
+
 let btn = document.getElementById("playBtn");
 let setting = document.getElementById("setting");
 let exitGame = document.getElementById("exit-game");
@@ -29,7 +37,50 @@ function resetCanvas() {
     count = 0;
     guessed = 0; 
     drawWood(); 
+    resetStats();
+}
 
+function updateGameStats() {
+    const remaining = maxAttempts - count;
+    
+    // Actualizar intentos restantes
+    attemptsRemainingEl.textContent = remaining;
+    attemptsRemainingEl.className = 'stat-value attempts-remaining';
+    
+    // Cambiar color según intentos restantes
+    if (remaining <= 2) {
+        attemptsRemainingEl.classList.add('attempts-critical');
+    } else if (remaining <= 3) {
+        attemptsRemainingEl.classList.add('attempts-low');
+    }
+    
+    // Actualizar intentos fallidos
+    failedAttemptsEl.textContent = count;
+    
+    // Actualizar letras usadas
+    updateUsedLetters();
+}
+
+function updateUsedLetters() {
+    if (usedLetters.length === 0) {
+        usedLettersEl.innerHTML = '<span class="stat-value" style="font-size: 12px;">Ninguna</span>';
+    } else {
+        usedLettersEl.innerHTML = usedLetters.map(letter => 
+            `<span class="letter-used">${letter}</span>`
+        ).join('');
+    }
+}
+
+function resetStats() {
+    count = 0;
+    guessed = 0;
+    usedLetters = [];
+    updateGameStats();
+    gameStats.style.display = 'flex';
+}
+
+function hideStats() {
+    gameStats.style.display = 'none';
 }
 
 function letterButton() {
@@ -40,6 +91,7 @@ function letterButton() {
         btn.addEventListener("click", () => {
             let charArray = chosenWord.split("");
             let dashes = document.getElementsByClassName("dashes");
+            usedLetters.push(btn.innerText);
             if (charArray.includes(btn.innerText)) {
                 charArray.forEach((char, index) => {
                     if (char === btn.innerText) {
@@ -63,6 +115,7 @@ function letterButton() {
                     document.getElementById("new-game").classList.remove("hide");
                 }
             }
+            updateGameStats();
             btn.disabled = true;
             console.log(btn.innerText);
         });
@@ -94,6 +147,7 @@ function goBack() {
     setting.classList.remove("active");
     document.getElementById("exit-confirm").classList.add("hide");
     document.getElementById("new-game").classList.add("hide");
+    hideStats();
     levelDifficulty = "";
     word.innerText = "";
     btnLetter.innerText = "";
@@ -204,6 +258,7 @@ function drawWood() {
     context.arc(199, 32, 3, 0, Math.PI * 2);
     context.stroke();
     
+    console.log("wood mejorado");
 };
 
 function head() {
@@ -230,6 +285,7 @@ function body() {
     
     drawLine(199, 57, 199, 95);
     
+    console.log("body mejorado");
 }
 
 function leftArm() {
@@ -271,6 +327,8 @@ function leftLeg() {
     
     
     drawLine(175, 125, 170, 125);
+    
+    console.log("leftLeg mejorado");
 }
 
 function rightLeg() {
@@ -337,4 +395,3 @@ function playBtn() {
     document.getElementById("new-game").classList.add("hide");
     letterButton();
 }
-
