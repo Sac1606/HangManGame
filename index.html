@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/0cbc6a10d9.js" crossorigin="anonymous"></script>
+    <script src="Script/index.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <section class="main" id="main">
+        <div class="box">
+            <h1>Welcome</h1>
+            <div class="box-setting" id="setting">
+                <h1>Chose your Difficulty</h1>
+                <div class="box-btn">
+                    <button onclick="startGame()" class="btn">Easy</button>
+                    <button onclick="startGame()" class="btn">Medium</button>
+                    <button onclick="startGame()" class="btn">Hard</button>
+                </div>
+            </div>
+            <button onclick="opneSetting()" class="btn" id="playBtn">Play</button>
+        </div>
+    </section>
+    <!-- game == container -->
+    <section class="game hidden" id="game">
+        <div onclick="confirmChoice()" class=" exit-game" id="exit-game">
+            <i class="fa-solid fa-door-open"></i>
+        </div>
+        <div class="box-game">
+            <canvas id="canvas">
+
+            </canvas>
+            <!-- word == user-input-section -->
+            <div class="word" id="word">
+
+
+            </div>
+        </div>
+
+        <div id="options" class="box-btn options">
+            <button class="btn" id="generateAgain">New Word</button>
+            <button class="btn" onclick="playBtn()"> Play</button>
+            <button class="btn" onclick="goBack()">Back</button>
+        </div>
+
+        <!-- btn-letter == letter container -->
+        <div id="btn-letter" class="btn-letter">
+
+        </div>
+
+        <div id="new-game" class="new-game hide">
+            <div class="result-box">
+                <div id="result"></div>
+                <div class="result-actions">
+                    <button class="btn" onclick="restartGame()">Play Again</button>
+                    <button class="btn" onclick="goBack()">Exit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="exit-confirm" class="new-game hide">
+            <div class="result-box">
+                <h2>Are you sure?</h2>
+                <p>Do you really want to exit the game?</p>
+                <div class="result-actions">
+                    <button class="btn" onclick="confirmExit(true)">Yes</button>
+                    <button class="btn" onclick="confirmExit(false)">No</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
