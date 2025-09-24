@@ -36,7 +36,45 @@
             <canvas id="canvas">
 
             </canvas>
-            <!-- word == user-input-section -->
+
+            <div class="word-container">
+                <div class="game-stats" id="game-stats" style="display: none;">
+                    <div class="stat-item">
+                        <div class="stat-label">Intentos Restantes</div>
+                        <div class="stat-value attempts-remaining" id="attempts-remaining">6</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Intentos Fallidos</div>
+                        <div class="stat-value" id="failed-attempts">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Letras Usadas</div>
+                        <div class="used-letters" id="used-letters">
+                            <span class="stat-value">Ninguna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="word" id="word">
+
+                </div>
+            </div>
+            <div class="game-stats" id="game-stats" style="display: none;">
+                <div class="stat-item">
+                    <div class="stat-label">Intentos Restantes</div>
+                    <div class="stat-value attempts-remaining" id="attempts-remaining">6</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Intentos Fallidos</div>
+                    <div class="stat-value" id="failed-attempts">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Letras Usadas</div>
+                    <div class="used-letters" id="used-letters">
+                        <span class="stat-value">Ninguna</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="word" id="word">
 
 
@@ -78,6 +116,5 @@
 
 
 </body>
-
 
 </html>
