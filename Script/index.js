@@ -204,7 +204,6 @@ function drawWood() {
     context.arc(199, 32, 3, 0, Math.PI * 2);
     context.stroke();
     
-    console.log("wood mejorado");
 };
 
 function head() {
@@ -231,7 +230,6 @@ function body() {
     
     drawLine(199, 57, 199, 95);
     
-    console.log("body mejorado");
 }
 
 function leftArm() {
@@ -273,8 +271,6 @@ function leftLeg() {
     
     
     drawLine(175, 125, 170, 125);
-    
-    console.log("leftLeg mejorado");
 }
 
 function rightLeg() {
@@ -341,3 +337,4 @@ function playBtn() {
     document.getElementById("new-game").classList.add("hide");
     letterButton();
 }
+
